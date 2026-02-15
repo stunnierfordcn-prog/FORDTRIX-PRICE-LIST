@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORDTRIX EXTREME</title>
+
+<div class="codm-logo">
+  <span class="cod">CALL OF DUTY</span>
+  <span class="mobile">GARENA</span>
+</div>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  background: black;
+  overflow-x: hidden;
+}
+
+/* Heartbeat Background */
+#heartbeat {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+h1 {
+  color: gold;
+  margin-top: 30px;
+}
+
+.card {
+  background: rgba(25,25,25,0.95);
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 18px;
+  width: 85%;
+  max-width: 360px;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(0,255,100,0.3);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.price {
+  color: #00ff66;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+button {
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  background: gold;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+#totalBox {
+  margin: 30px;
+  font-size: 20px;
+  color: cyan;
+}
+
+/* TELEGRAM FLOAT BUTTON */
+.telegram-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #0088cc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(0,136,204,0.7);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.telegram-float img {
+  width: 30px;
+}
+
+.telegram-float:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 30px rgba(0,136,204,1);
+}
+</style>
+
+<style>
+body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #0f0f2b, #000);
+  color:white;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* PARTICLE BACKGROUND */
+#bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+}
+
+/* HEADER */
+.header{
+  margin-top:40px;
+  font-size:40px;
+  font-weight:900;
+  letter-spacing:3px;
+  background:linear-gradient(90deg,gold,orange,white);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 25px gold;
+}
+
+/* SUBTITLE */
+.sub{
+  color:cyan;
+  margin-bottom:30px;
+  text-shadow:0 0 10px cyan;
+}
+
+/* CARD CONTAINER */
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+  padding:20px;
+}
+
+/* LEGENDARY CARD */
+.card{
+  position:relative;
+  width:280px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  box-shadow:0 0 30px rgba(255,215,0,0.5);
+  transition:0.4s;
+  overflow:hidden;
+}
+
+/* ANIMATED BORDER */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:20px;
+  padding:2px;
+  background:linear-gradient(45deg,gold,magenta,cyan,gold);
+  background-size:300%;
+  animation:borderMove 6s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+}
+
+@keyframes borderMove{
+  0%{background-position:0%}
+  100%{background-position:300%}
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.05);
+  box-shadow:0 0 50px gold;
+}
+
+.card h3{
+  margin:10px 0;
+  font-size:22px;
+}
+
+.price{
+  font-size:26px;
+  font-weight:bold;
+  color:gold;
+  text-shadow:0 0 15px gold;
+  margin:10px 0;
+}
+
+button{
+  padding:10px 18px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(45deg,gold,orange);
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px gold;
+}
+
+/* FOOTER */
+.footer{
+  margin:40px 0;
+  color:gray;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="header">👑 FORDTRIX PRICE 👑</div>
+🄼🄾🄳&🄸🄽🄹🄴🄲🅃🄾🅁
+<div class="sub">Premium Digital Showcase</div>
+
+<div class="container">
+
+<div class="card">
+  <h3>3 Days</h3>
+  <div class="price">₱130</div>
+  <button>ViP</button>
+</div>
+
+<div class="card">
+  <h3>15 Days</h3>
+  <div class="price">₱230</div>
+  <button>ViP</button>
+</div>
+
+<div class="card">
+  <h3>30 Days</h3>
+  <div class="price">₱500</div>
+  <button>ViP</button>
+</div>
+
+<div class="card">
+  <h3>Lifetime Access</h3>
+  <div class="price">₱1k</div>
+  <button>ViP</button>
+</div>
+
+<div class="card">
+  <h3>Lifetime Promo</h3>
+     4slot 1/4
+  <div class="price">₱450</div>
+  <button>ViP</button>
+</div>
+
+<div id="totalBox"><span id=""></span><br>
+wala kaba pang avail?!?!?
+</div>
+<button onclick="resetTotal()">Click this free😁</button>
+<!-- TELEGRAM LOGO BUTTON -->
+<a href="https://t.me/fordCN" target="_blank" class="telegram-float">
+  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+</a>
+
+
+<div class="footer">© 2026 Legendary UI Design By: ford</div>
+
+<script>
+/* PARTICLE BACKGROUND */
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+}
+resize();
+window.addEventListener("resize",resize);
+
+let particles=[];
+for(let i=0;i<120;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    size:Math.random()*2,
+    speed:Math.random()*0.5+0.2
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="rgba(255,215,0,0.8)";
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.fill();
+    p.y+=p.speed;
+    if(p.y>canvas.height) p.y=0;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+<audio id="music" src="tahanan.mp3" loop></audio>
+
+<script>
+const music = document.getElementById("music");
+
+// Set balanced volume (0.0 - 1.0)
+music.volume = 1.0; // 200% volume
+
+function startMusic(){
+    music.play().catch(()=>{});
+}
+
+// Auto play on first interaction (tap, scroll, touch)
+document.addEventListener("click", startMusic, { once: true });
+document.addEventListener("touchstart", startMusic, { once: true });
+document.addEventListener("scroll", startMusic, { once: true });
+</script>
+
+</body>
+</html>
