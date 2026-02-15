@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORDTRIX EXTREME</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:black;
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* MATRIX */
+#matrix{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-3;
+}
+
+/* HEARTBEAT */
+#heartbeat{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+}
+
+/* FIRE LOGO */
+.fire-logo{
+  font-size:32px;
+  font-weight:900;
+  margin-top:40px;
+  background:linear-gradient(90deg, red, orange, yellow, red);
+  background-size:400%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:fireMove 3s linear infinite;
+}
+
+@keyframes fireMove{
+  0%{background-position:0%;}
+  100%{background-position:400%;}
+}
+
+/* GLOWING CARD */
+.card{
+  position:relative;
+  background:#111;
+  margin:20px auto;
+  padding:20px;
+  border-radius:20px;
+  width:90%;
+  max-width:380px;
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  top:-2px;
+  left:-2px;
+  right:-2px;
+  bottom:-2px;
+  background:linear-gradient(45deg,#00ff66,#00ffff,#ff00ff,#00ff66);
+  background-size:400%;
+  border-radius:22px;
+  z-index:-1;
+  animation:borderGlow 5s linear infinite;
+}
+
+@keyframes borderGlow{
+  0%{background-position:0%;}
+  100%{background-position:400%;}
+}
+
+.price{
+  color:#00ff66;
+  font-size:22px;
+  font-weight:bold;
+}
+
+button{
+  padding:8px 15px;
+  border-radius:10px;
+  border:none;
+  background:gold;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+#totalBox{
+  margin:25px;
+  font-size:20px;
+  color:cyan;
+}
+
+/* PROMO */
+.promo{
+  position:fixed;
+  top:-60px;
+  left:50%;
+  transform:translateX(-50%);
+  background:red;
+  padding:15px 25px;
+  border-radius:12px;
+  font-weight:bold;
+  transition:0.5s;
+  z-index:1000;
+}
+
+.promo.show{
+  top:20px;
+}
+
+/* TELEGRAM BUTTON */
+.telegram-btn{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:#0088cc;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  box-shadow:
+    0 0 10px #0088cc,
+    0 0 20px #0088cc,
+    0 0 40px #0088cc;
+  transition:0.3s;
+}
+
+.telegram-btn:hover{
+  transform:scale(1.15) rotate(5deg);
+}
+
+.telegram-btn img{
+  width:35px;
+}
+
+.red-dot{
+  position:absolute;
+  top:8px;
+  right:8px;
+  width:14px;
+  height:14px;
+  background:red;
+  border-radius:50%;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%,100%{opacity:1;}
+  50%{opacity:0.2;}
+}
+
+/* SLIDE PANEL */
+.panel{
+  position:fixed;
+  right:-300px;
+  top:0;
+  width:280px;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  backdrop-filter:blur(10px);
+  padding:25px;
+  transition:0.4s;
+  box-shadow:-5px 0 20px rgba(0,136,204,0.5);
+}
+
+.panel.active{
+  right:0;
+}
+
+.close-btn{
+  background:red;
+  padding:5px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+<canvas id="heartbeat"></canvas>
+
+<div class="promo" id="promo">
+🔥 LIMITED PROMO TODAY ONLY! 🔥
+</div>
+
+<div class="fire-logo">
+CALL OF DUTY MOD
+</div>
+
+<h2>FORDTRIX Price-list</h2>
+
+<div class="card">
+<h3>3 Days</h3>
+<div class="price">₱130</div>
+<button onclick="addToTotal(120)">Buy this key</button>
+</div>
+
+<div class="card">
+<h3>15 Days</h3>
+<div class="price">₱230</div>
+<button onclick="addToTotal(230)">Buy this key</button>
+</div>
+
+<div class="card">
+<h3>30 Days</h3>
+<div class="price">₱500</div>
+<button onclick="addToTotal(230)">Buy this key</button>
+</div>
+
+<div class="card">
+<h3>Lifetime Access</h3>
+<div class="price">₱1k</div>
+<button onclick="addToTotal(230)">Buy this key</button>
+</div>
+
+<div class="card">
+<h3>Lifetime Promo</h3>
+   4slot 1/4
+<div class="price">₱450</div>
+<button onclick="addToTotal(230)">Buy this key</button>
+</div>
+
+<div id="totalBox">
+Owner: <span id="">@fordCN</span>
+</div>
+
+<button onclick="resetTotal()">Buy key Owner</button>
+
+<div class="telegram-btn" onclick="openPanel()">
+<div class="red-dot"></div>
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
+</div>
+
+<div class="panel" id="panel">
+<h2>Contact Owner</h2>
+<p>@fordCN</p>
+<button onclick="copyUser()">Copy Username Owner</button>
+<br><br>
+<button onclick="goTelegram()">Click to Buy</button>
+<br><br>
+<div class="close-btn" onclick="closePanel()">Close</div>
+</div>
+
+<script>
+/* TOTAL */
+let total=0;
+function addToTotal(p){
+total+=p;
+document.getElementById("total").innerText=total;
+}
+function resetTotal(){
+total=0;
+document.getElementById("total").innerText=0;
+}
+
+/* PROMO */
+window.onload=function(){
+setTimeout(()=>{
+document.getElementById("promo").classList.add("show");
+},1000);
+
+setTimeout(()=>{
+document.getElementById("promo").classList.remove("show");
+},5000);
+}
+
+/* MATRIX */
+const matrix=document.getElementById("matrix");
+const mtx=matrix.getContext("2d");
+matrix.width=window.innerWidth;
+matrix.height=window.innerHeight;
+let letters="01".split("");
+let fontSize=14;
+let columns=matrix.width/fontSize;
+let drops=[];
+for(let i=0;i<columns;i++) drops[i]=1;
+
+function drawMatrix(){
+mtx.fillStyle="rgba(0,0,0,0.05)";
+mtx.fillRect(0,0,matrix.width,matrix.height);
+mtx.fillStyle="#0F0";
+mtx.font=fontSize+"px monospace";
+for(let i=0;i<drops.length;i++){
+let text=letters[Math.floor(Math.random()*letters.length)];
+mtx.fillText(text,i*fontSize,drops[i]*fontSize);
+if(drops[i]*fontSize>matrix.height && Math.random()>0.975)
+drops[i]=0;
+drops[i]++;
+}
+}
+setInterval(drawMatrix,35);
+
+/* HEARTBEAT */
+const canvas=document.getElementById("heartbeat");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let x=0;
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.beginPath();
+ctx.lineWidth=3;
+ctx.strokeStyle="#00ff66";
+ctx.shadowBlur=20;
+ctx.shadowColor="#00ff66";
+let base=canvas.height/2;
+ctx.moveTo(0,base);
+for(let i=0;i<canvas.width;i++){
+let y=base+Math.sin((i+x)*0.02)*3;
+if(i%200===0) y=base-110;
+if(i%200===15) y=base+70;
+ctx.lineTo(i,y);
+}
+ctx.stroke();
+x+=4;
+requestAnimationFrame(draw);
+}
+draw();
+
+/* TELEGRAM */
+function openPanel(){
+document.getElementById("panel").classList.add("active");
+}
+function closePanel(){
+document.getElementById("panel").classList.remove("active");
+}
+function copyUser(){
+navigator.clipboard.writeText("@fordCN");
+alert("Username Copied!");
+}
+function goTelegram(){
+window.open("https://t.me/fordCN","_blank");
+}
+</script>
+
+</body>
+</html>
